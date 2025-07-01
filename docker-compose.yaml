@@ -35,6 +35,18 @@ services:
       timeout: 5s
       retries: 5
 
+  springboot-app:
+    build: .
+    container_name: bitespeed-backend-app
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/bitespeed_database
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    ports:
+      - "8080:8080"
+
 volumes:
   postgres-data:
   postgres-test-data:
