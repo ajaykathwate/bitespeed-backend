@@ -3,6 +3,6 @@ services:
     name: bitespeed-backend-task-app
     env: docker
     repo: https://github.com/ajaykathwate/bitespeed-backend
-    branch: main
+    branch: master
     plan: free
     autoDeploy: true
