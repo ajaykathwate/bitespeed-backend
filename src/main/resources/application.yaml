@@ -1,0 +1,46 @@
+
+#
+# Server Properties
+#
+server:
+  port: ${APP_SERVER_PORT:8080}
+  tomcat:
+    accept-count: 100
+    max-connections: 8192
+    threads:
+      max: 200
+      min-spare: 10
+    connection-timeout: 5000
+
+#
+# Spring Properties
+#
+spring:
+  application:
+    name: FineMeet Web Application
+  output:
+    ansi:
+      enabled: detect
+
+  #
+  # Database Properties
+  #
+  datasource:
+    url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/bitespeed_database}"
+    username: "${SPRING_DATASOURCE_USERNAME:postgres}"
+    password: "${SPRING_DATASOURCE_PASSWORD:postgres}"
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        jdbc.batch_size: 30
+        format_sql: true
